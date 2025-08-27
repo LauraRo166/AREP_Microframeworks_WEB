@@ -35,6 +35,15 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/webroot</directory>
+                <targetPath>webroot</targetPath>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <!-- Asegura que JUnit 5 se ejecute correctamente -->
             <plugin>
