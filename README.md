@@ -36,7 +36,7 @@ showcasing how an HTTP server and basic routing can be built in pure Java.
    ```
 4. Should look something like this:
     
-{imagen build}
+<img width="974" height="191" alt="image" src="https://github.com/user-attachments/assets/d7f6a2ec-c2d1-45a6-a946-75b0a86e563d" />
 
 ---
 
@@ -45,19 +45,36 @@ showcasing how an HTTP server and basic routing can be built in pure Java.
 1. Start the server by running:
 
    ```bash
-   mvn exec:java -Dexec.mainClass="co.edu.escuelaing.httpserver.HttpServer"
+   mvn exec:java -Dexec.mainClass="co.edu.escuelaing.webexample.WebApplication"
    ```
 
 2. The server will listen on port 35000, you can open your browser and try the index file with:
    ```
    http://localhost:35000/index.html
    ```
-   <img width="1920" height="979" alt="image" src="https://github.com/user-attachments/assets/945f3de4-16e9-4f43-8b86-cf8d7db51f3e" />
+   <img width="1917" height="976" alt="image" src="https://github.com/user-attachments/assets/3e253d53-9f0c-4600-a759-37a572268251" />
+
 ---
 
 ## 🏗️ Architecture
 
-<img width="671" height="261" alt="Architecture" src="https://github.com/user-attachments/assets/9f82ce77-c5d2-40b7-b565-52ce494bb432" />
+<img width="671" height="261" alt="Architecture" src="[https://github.com/user-attachments/assets/9f82ce77-c5d2-40b7-b565-52ce494bb432](https://github.com/user-attachments/assets/151330ca-c331-4120-9676-37751a65faff)" />
+
+This architecture represents a simple web microframework built in Java.
+
+1. **Client:** The user interacts with the system by sending an HTTP request (for example, through a browser or tool like curl) to port 35000.
+
+2. **REST Application (WebApplication):** This layer defines the REST endpoints (e.g., /hello, /pi, /echo). It acts as the business logic, processing client requests and returning responses.
+
+3. **Microframework Web:** This is the custom HTTP server implementation that powers the REST application. It is composed of:
+
+   - HttpServer: Handles incoming client connections and routes requests to the correct service.
+
+   - HttpRequest: Parses and encapsulates the HTTP request, including method, URI, parameters, and body.
+
+   - HttpResponse: Builds and returns the HTTP response with status codes, headers, and body content.
+
+The client communicates with the REST application through HTTP, while the REST application relies on the microframework components to process requests and generate appropriate responses.
 
 ---
 
@@ -83,7 +100,8 @@ Should look something like this:
    http://localhost:35000/pi
    ```
   
-{Imagen de /pi}
+<img width="474" height="208" alt="image" src="https://github.com/user-attachments/assets/43989038-ada3-45d6-9aed-d1ecb017995d" />
+
 
 - You can try other resources stored in the resources folder, for example:
    ```
@@ -98,15 +116,15 @@ Should look something like this:
    ```
    http://localhost:35000/perrito.jpg
    ```
-   <img width="1920" height="981" alt="image" src="https://github.com/user-attachments/assets/da7748f4-36cb-4f3d-9e2d-21cd830b1ee0" />
+   <img width="1920" height="977" alt="image" src="https://github.com/user-attachments/assets/ef911f2a-067f-44ca-a647-8edc3102a5b9" />
 
 - When you enter your name in the first option, the server will respond with a greeting with a get method. Like this:
 
- <img width="1920" height="914" alt="image" src="https://github.com/user-attachments/assets/ec1a5cb0-011b-481f-b2ac-fdfa7d67963d" />
+   <img width="1919" height="970" alt="image" src="https://github.com/user-attachments/assets/f9cb82de-6c3c-4e89-8500-68cbefd23ce6" />
 
 - And with the second option the server will return what was written with a post method. Like this:
 
-   <img width="1920" height="909" alt="image" src="https://github.com/user-attachments/assets/94533ed2-74b1-4727-8180-88e595b0aca2" />
+   <img width="1915" height="981" alt="image" src="https://github.com/user-attachments/assets/30cdd14c-446a-4f20-a2f5-0fa0954ec165" />
 
 ---
 
