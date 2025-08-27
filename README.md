@@ -91,7 +91,7 @@ To run the tests:
 
 Should look something like this:
 
-{imagen tests }
+<img width="1178" height="346" alt="image" src="https://github.com/user-attachments/assets/992f16f1-5b02-48a8-b94d-262b82b8d05f" />
 
 ### Testing of the developed microframework
 
