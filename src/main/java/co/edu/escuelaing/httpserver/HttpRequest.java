@@ -70,6 +70,15 @@ public class HttpRequest {
     }
 
     /**
+     * Returns the HTTP method of the request.
+     *
+     * @return the HTTP method (e.g., GET, POST)
+     */
+    public String getMethod() {
+        return method;
+    }
+
+    /**
      * Returns the body of the request.
      *
      * @return the request body, or null if none
@@ -78,4 +87,12 @@ public class HttpRequest {
         return body;
     }
 
+    /**
+     * Returns the full URI of the request.
+     *
+     * @return the request URI
+     */
+    public URI getRequestUri() {
+        return requestUri;
+    }
 }

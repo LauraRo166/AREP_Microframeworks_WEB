@@ -26,6 +26,16 @@ public class HttpResponse {
     }
 
     /**
+     * Sets the HTTP status code of the response.
+     *
+     * @param code    the HTTP status code (e.g., 200, 404)
+     * @param message the associated reason phrase (not currently used)
+     */
+    public void setStatus(int code, String message) {
+        this.status = code;
+    }
+
+    /**
      * Sets the body of the response.
      *
      * @param body the response body as a string
@@ -33,6 +43,16 @@ public class HttpResponse {
     public void setBody(String body) {
         this.body = body;
         header.put("Content-Length", String.valueOf(body.getBytes().length));
+    }
+
+    /**
+     * Adds or updates a response header.
+     *
+     * @param key   the header name
+     * @param value the header value
+     */
+    public void setHeader(String key, String value) {
+        header.put(key, value);
     }
 
     /**

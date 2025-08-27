@@ -7,8 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A simple HTTP server implementation that listens on port 35000.
- * Return 404 responses for resources that are not found.
+ * A simple HTTP server implementation that listens on port 35000 and can: Serve
+ * static files (HTML, CSS, JS, images, etc.) from a predefined directory.
+ * Handle basic REST endpoints using {@link RestService} for GET and POST
+ * requests. Return 404 responses for resources that are not found.
  *
  * @author laura.rsanchez
  *
@@ -28,10 +30,11 @@ public class HttpServer {
      * handles incoming requests in an infinite loop.
      *
      * @param args command-line arguments (not used).
+     * @throws IOException if an I/O error occurs when opening the socket or
      * handling requests.
      * @throws URISyntaxException if a malformed URI is found in the request.
      */
-    public static void startServer(String[] args) throws URISyntaxException {
+    public static void startServer(String[] args) throws IOException, URISyntaxException {
         ServerSocket serverSocket;
         try {
             serverSocket = new ServerSocket(35000);
@@ -53,6 +56,7 @@ public class HttpServer {
     /**
      * Handles a client request by reading the HTTP request, extracting the
      * method and URI, and delegating the response to
+     * {@link #handleMethod(String, URI, PrintWriter, Socket)}.
      *
      * @param clientSocket the connected client socket.
      * @throws URISyntaxException if the request URI is malformed.
@@ -80,6 +84,7 @@ public class HttpServer {
         StringBuilder body = new StringBuilder();
         if ("POST".equalsIgnoreCase(method) && contentLength > 0) {
             char[] buf = new char[contentLength];
+            in.read(buf, 0, contentLength);
             body.append(buf);
         }
 
@@ -93,11 +98,12 @@ public class HttpServer {
     }
 
     /**
-     * Serves a static file (HTML, CSS, JS, etc.)
+     * Serves a static file (HTML, CSS, JS, etc.) from the {@link #WEB_ROOT}
      * directory.
      *
      * @param requestUri requested resource URI.
      * @param out writer for sending headers and text responses.
+     * @param clientSocket client socket for binary data.
      * @throws IOException if an error occurs while reading the file or writing
      * the response.
      */
